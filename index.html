@@ -15,10 +15,93 @@
 
 <body>
     <header>
-        <h1 class="title">Train Schedule</h1>
-        <h6 class="subtitle">Put A Subtitle here</h6>
+        <div class="headertext">
+            <h1 class="title">Train Schedule</h1>
+            <h6 class="subtitle">Put A Subtitle here</h6>
+        </div>
     </header>
+    <div class="container">
+        <br>
+        <div class="scheduleWrapper">
+            <div class="scheduleHeading">
+                <div class="scheduleTitle">
+                    <h6>Current Train Schedule</h6>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-md-3 nameHeading">
+                    <strong>Train Name</strong>
+                </div>
+                <div class="col-md-2 destinationHeading">
+                    <strong>Destination</strong>
+                </div>
+                <div class="col-md-2 frequencyHeading">
+                    <strong>Frequency (min)</strong>
+                </div>
+                <div class="col-md-2 arrivalHeading">
+                    <strong>Next Arrival</strong>
+                </div>
+                <div class="col-md-2 minutesHeading">
+                    <strong>Minutes Away</strong>
+                </div>
+            </div>
+            <div class="scheduleText">
+                <div class="row">
+                    <div id="nameDisplay" class="col-md-3 nameHeading"><p></p></div>
+                    <div id="destDisplay" class="col-md-2 destinationHeading"><p></p></div>
+                    <div id="freqDisplay" class="col-md-2 frequencyHeading"><p></p></div>
+                    <div id="arrivalDisplay" class="col-md-2 arrivalHeading"><p></p></div>
+                    <div id="minDisplay" class="col-md-2 minutesHeading"><p></p></div>
+                </div>
+            </div>
+            <!--Closes scheduleText-->
+        </div>
+        <!--Closes scheduleWrapper-->
+        <br>
+
+        <div class="inputWrapper">
+            <div class="inputHeading">
+                <div class="inputTitle">
+                    <h6>Add Train</h6>
+                </div>
+            </div>
+
+            <form id="inputForm">
+                <br>
+                <div class="form-group">
+                    <!-- <label for="exampleInputEmail1">Train Name</label> -->
+                    <label>Train Name</label>
+                    <!-- <input type="email" class="form-control" id="nameInput" aria-describedby="" placeholder=""> -->
+                    <input class="form-control" id="nameInput" placeholder="">
+                </div>
+                <div class="form-group">
+                        <!-- <label for="exampleInputEmail1">Destination</label> -->
+                        <label>Destination</label>
+                        <!-- <input type="email" class="form-control" id="destInput" aria-describedby="" placeholder=""> -->
+                        <input class="form-control" id="destInput" placeholder="">
+                    </div>
+                    <div class="form-group">
+                            <!-- <label for="exampleInputEmail1">First Train Time (HH:mm - military time)</label> -->
+                            <label>First Train Time (HH:mm - military time)</label>
+                            <!-- <input type="email" class="form-control" id="firstTrainInput" aria-describedby="" placeholder=""> -->
+                            <input class="form-control" id="firstTrainInput" placeholder="">
+                        </div>
+                        <div class="form-group">
+                                <!-- <label for="exampleInputEmail1">Frequency (min)</label> -->
+                                <label>Frequency (min)</label>
+                                <!-- <input type="email" class="form-control" id="freqInput" aria-describedby="" placeholder=""> -->
+                                <input class="form-control" id="freqInput" aria-describedby="" placeholder="">
+                            </div>
+                <button id="add-train" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <!-- closes inputWrapper-->
+        <br>
+       
+
+    </div>
+    <!-- Closes .container-->
 
     <footer>
 

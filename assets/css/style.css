@@ -1,0 +1,51 @@
+header {
+    background-color: chocolate;
+    height: 125px;
+}
+.headertext {
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 125px;
+}
+
+.scheduleWrapper {
+    min-height: 500px;
+    border: medium solid seagreen;
+}
+.inputWrapper {
+    min-height: 450px;
+    border: medium solid seagreen;
+
+}
+
+.scheduleHeading, .inputHeading {
+    background-color: seagreen;
+    height: 25px;
+   }
+
+.scheduleTitle, .inputTitle {
+    color: white;
+    padding-left: 5px;
+    padding-top: 3px;
+}
+
+.scheduleText {
+    color: darkgray;
+}
+
+.nameHeading {
+    margin-left: 18px;
+}
+
+#inputForm {
+    width: 1080px;
+    margin: auto;
+
+}
+
+
+
+
