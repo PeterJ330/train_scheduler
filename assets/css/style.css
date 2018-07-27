@@ -11,6 +11,12 @@ header {
     height: 125px;
 }
 
+#clock {
+    margin: auto;
+    text-align: center;
+    color: red;
+}
+
 .scheduleWrapper {
     min-height: 500px;
     border: medium solid seagreen;

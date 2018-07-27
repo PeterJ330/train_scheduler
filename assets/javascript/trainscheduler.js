@@ -16,6 +16,11 @@ var firstTrain = "";
 var frequency = "";
 var nextArrival = "";
 var minutesAway = "";
+var currentTime = moment();
+console.log(currentTime);
+console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
+
+$("#clock").text(moment(currentTime).format("HH:mm"));
 
 $("#add-train").on("click", function (event) {
   event.preventDefault();
@@ -69,9 +74,9 @@ function calculateVariables() {
   var nextTrain = moment().add(minutesLeft, "minutes");
   console.log(moment(nextTrain).format("X"));
   nextArrival = moment(nextTrain).format("HH:mm");
-  
+
   console.log(moment(nextTrain).diff(moment(), "minutes"))
   minutesAway = moment(nextTrain).diff(moment(), "minutes")
   console.log(minutesAway);
-  
+
 };
