@@ -72,13 +72,17 @@ function calculateVariables() {
   console.log("Time Diff: " + timeDiff);
   var remainder = timeDiff % frequency;
   console.log(remainder);
-  var timeToTrain = frequency - remainder; 
-  console.log("Min until Train: " + timeToTrain);
-  var nextTrain = moment().add(timeToTrain, "minutes");
+  // var timeToTrain = frequency - remainder; 
+  // console.log("Min until Train: " + timeToTrain);
+  // var nextTrain = moment().add(timeToTrain, "minutes");
+  // console.log("Arrival Time: " + moment(nextTrain).format("hh:mm"))
+  minutesAway = frequency - remainder; 
+  console.log("Min until Train: " + minutesAway);
+  var nextTrain = moment().add(minutesAway, "minutes");
   console.log("Arrival Time: " + moment(nextTrain).format("hh:mm"))
 
   nextArrival = moment(nextTrain).format("hh:mm");
-  minutesAway = timeToTrain;
+  // minutesAway = timeToTrain;
   
 
   console.log(name);

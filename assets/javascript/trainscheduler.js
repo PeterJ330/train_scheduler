@@ -16,7 +16,6 @@ var firstTrain = "";
 var frequency = "";
 var nextArrival = "";
 var minutesAway = "";
-var arrivalTime = "";
 
 $("#add-train").on("click", function (event) {
   event.preventDefault();
@@ -27,7 +26,7 @@ $("#add-train").on("click", function (event) {
   frequency = $("#freqInput").val().trim();
 
   calculateVariables();
-  
+
   database.ref().push({
     name: name,
     destination: destination,
@@ -40,7 +39,7 @@ $("#add-train").on("click", function (event) {
 });//closes .onClick
 
 database.ref().on("child_added", function (childSnapshot) {
-var cs = childSnapshot.val()
+  var cs = childSnapshot.val()
   console.log(cs.name);
   console.log(cs.destination);
   console.log(cs.firstTrain);
@@ -57,33 +56,16 @@ var cs = childSnapshot.val()
   $("#destInput").val("");
   $("#firstTrainInput").val("");
   $("#freqInput").val("");
-      
-}, function(errorObject) {
-console.log("Errors handled: " + errorObject.code);
+
+}, function (errorObject) {
+  console.log("Errors handled: " + errorObject.code);
 });
 
 function calculateVariables() {
-
   var timeConvert = moment(firstTrain, "HH:mm").subtract(1, "years");
-  console.log(timeConvert);
-  var currentTime = moment();
-  console.log("Current Time: " + moment(currentTime).format("HH:mm"));
   var timeDiff = moment().diff(moment(timeConvert), "minutes");
-  console.log("Time Diff: " + timeDiff);
   var remainder = timeDiff % frequency;
-  console.log(remainder);
-  var timeToTrain = frequency - remainder; 
-  console.log("Min until Train: " + timeToTrain);
-  var nextTrain = moment().add(timeToTrain, "minutes");
-  console.log("Arrival Time: " + moment(nextTrain).format("hh:mm"))
-
+  minutesAway = frequency - remainder;
+  var nextTrain = moment().add(minutesAway, "minutes");
   nextArrival = moment(nextTrain).format("hh:mm");
-  minutesAway = timeToTrain;
-  
-
-  console.log(name);
-  console.log(destination);
-  console.log(firstTrain);
-  console.log(nextArrival);
-  console.log(minutesAway);
 };
