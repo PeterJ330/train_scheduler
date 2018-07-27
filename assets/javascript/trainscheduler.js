@@ -65,7 +65,13 @@ function calculateVariables() {
   var timeConvert = moment(firstTrain, "HH:mm").subtract(1, "years");
   var timeDiff = moment().diff(moment(timeConvert), "minutes");
   var remainder = timeDiff % frequency;
-  minutesAway = frequency - remainder;
-  var nextTrain = moment().add(minutesAway, "minutes");
-  nextArrival = moment(nextTrain).format("hh:mm");
+  minutesLeft = frequency - remainder;
+  var nextTrain = moment().add(minutesLeft, "minutes");
+  console.log(moment(nextTrain).format("X"));
+  nextArrival = moment(nextTrain).format("HH:mm");
+  
+  console.log(moment(nextTrain).diff(moment(), "minutes"))
+  minutesAway = moment(nextTrain).diff(moment(), "minutes")
+  console.log(minutesAway);
+  
 };
