@@ -47,12 +47,22 @@
                 </div>
             </div>
             <div class="scheduleText">
-                <div class="row">
-                    <div id="nameDisplay" class="col-md-3 nameHeading"><p></p></div>
-                    <div id="destDisplay" class="col-md-2 destinationHeading"><p></p></div>
-                    <div id="freqDisplay" class="col-md-2 frequencyHeading"><p></p></div>
-                    <div id="arrivalDisplay" class="col-md-2 arrivalHeading"><p></p></div>
-                    <div id="minDisplay" class="col-md-2 minutesHeading"><p></p></div>
+                <div id="scheduleInput" class="row">
+                    <div id="nameDisplay" class="col-md-3 nameHeading">
+                        <div class="nameAdd"></div>
+                    </div>
+                    <div id="destDisplay" class="col-md-2 destinationHeading">
+                        <div class="destAdd"></div>
+                    </div>
+                    <div id="freqDisplay" class="col-md-2 frequencyHeading">
+                        <div class="freqAdd"></div>
+                    </div>
+                    <div id="arrivalDisplay" class="col-md-2 arrivalHeading">
+                        <div class="arrivalAdd"></div>
+                    </div>
+                    <div id="minDisplay" class="col-md-2 minutesHeading">
+                        <div class="minAdd"></div>
+                    </div>
                 </div>
             </div>
             <!--Closes scheduleText-->
@@ -70,35 +80,27 @@
             <form id="inputForm">
                 <br>
                 <div class="form-group">
-                    <!-- <label for="exampleInputEmail1">Train Name</label> -->
                     <label>Train Name</label>
-                    <!-- <input type="email" class="form-control" id="nameInput" aria-describedby="" placeholder=""> -->
                     <input class="form-control" id="nameInput" placeholder="">
                 </div>
                 <div class="form-group">
-                        <!-- <label for="exampleInputEmail1">Destination</label> -->
-                        <label>Destination</label>
-                        <!-- <input type="email" class="form-control" id="destInput" aria-describedby="" placeholder=""> -->
-                        <input class="form-control" id="destInput" placeholder="">
-                    </div>
-                    <div class="form-group">
-                            <!-- <label for="exampleInputEmail1">First Train Time (HH:mm - military time)</label> -->
-                            <label>First Train Time (HH:mm - military time)</label>
-                            <!-- <input type="email" class="form-control" id="firstTrainInput" aria-describedby="" placeholder=""> -->
-                            <input class="form-control" id="firstTrainInput" placeholder="">
-                        </div>
-                        <div class="form-group">
-                                <!-- <label for="exampleInputEmail1">Frequency (min)</label> -->
-                                <label>Frequency (min)</label>
-                                <!-- <input type="email" class="form-control" id="freqInput" aria-describedby="" placeholder=""> -->
-                                <input class="form-control" id="freqInput" aria-describedby="" placeholder="">
-                            </div>
+                    <label>Destination</label>
+                    <input class="form-control" id="destInput" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>First Train Time (HH:mm - military time)</label>
+                    <input class="form-control" id="firstTrainInput" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Frequency (min)</label>
+                    <input class="form-control" id="freqInput" aria-describedby="" placeholder="">
+                </div>
                 <button id="add-train" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
         <!-- closes inputWrapper-->
         <br>
-       
+
 
     </div>
     <!-- Closes .container-->

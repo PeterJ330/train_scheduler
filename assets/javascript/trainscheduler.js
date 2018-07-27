@@ -46,11 +46,11 @@ database.ref().on("child_added", function (childSnapshot) {
   console.log(cs.nextArrival);
   console.log(cs.minutesAway);
 
-  $("#nameDisplay").append(cs.name);
-  $("#destDisplay").append(cs.destination);
-  $("#freqDisplay").append(cs.frequency);
-  $("#arrivalDisplay").append(cs.nextArrival);
-  $("#minDisplay").append(cs.minutesAway);
+  $("#nameDisplay").append("<div class='nameAdd'>" + cs.name);
+  $("#destDisplay").append("<div class='destAdd'>" + cs.destination);
+  $("#freqDisplay").append("<div class='freqAdd'>" + cs.frequency);
+  $("#arrivalDisplay").append("<div class='arrivalAdd'>" + cs.nextArrival);
+  $("#minDisplay").append("<div class='minAdd'>" + cs.minutesAway);
 
   $("#nameInput").val("");
   $("#destInput").val("");
