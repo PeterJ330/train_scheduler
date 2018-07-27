@@ -27,14 +27,14 @@ $("#add-train").on("click", function (event) {
   frequency = $("#freqInput").val().trim();
 
   calculateVariables();
-
+  
   database.ref().push({
     name: name,
     destination: destination,
     firstTrain: firstTrain,
     frequency: frequency,
     minutesAway: minutesAway,
-    // nextArrival: nextArrival,
+    nextArrival: nextArrival,
     dateAdded: firebase.database.ServerValue.TIMESTAMP
   });//closes push
 });//closes .onClick
@@ -63,23 +63,23 @@ console.log("Errors handled: " + errorObject.code);
 });
 
 function calculateVariables() {
+
   var timeConvert = moment(firstTrain, "HH:mm").subtract(1, "years");
   console.log(timeConvert);
   var currentTime = moment();
-  console.log("Current Time: " + moment(currentTime).format("hh:mm"));
+  console.log("Current Time: " + moment(currentTime).format("HH:mm"));
   var timeDiff = moment().diff(moment(timeConvert), "minutes");
   console.log("Time Diff: " + timeDiff);
   var remainder = timeDiff % frequency;
   console.log(remainder);
   var timeToTrain = frequency - remainder; 
   console.log("Min until Train: " + timeToTrain);
-  // var nextTrain = moment().add(timeToTrain, "minutes");
-  // console.log("Arrival Time: " + moment(nextTrain).format("hh:mm"))
-  nextArrival = moment().add(timeToTrain, "minutes");
-  console.log("Arrival Time: " + moment(nextArrival).format("hh:mm"))
-  
+  var nextTrain = moment().add(timeToTrain, "minutes");
+  console.log("Arrival Time: " + moment(nextTrain).format("hh:mm"))
+
+  nextArrival = moment(nextTrain).format("hh:mm");
   minutesAway = timeToTrain;
-  // nextArrival = nextTrain;
+  
 
   console.log(name);
   console.log(destination);
