@@ -16,11 +16,22 @@ var firstTrain = "";
 var frequency = "";
 var nextArrival = "";
 var minutesAway = "";
+var updatedNextArrival = "";
+var newMinutesAway = "";
 var currentTime = moment();
-console.log(currentTime);
-console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
 
-$("#clock").text(moment(currentTime).format("HH:mm"));
+
+// $(document).ready(clock);
+
+function clock() {
+  $("#clock").text(moment().format('LL'));
+  $("#clock").append(" - ");
+  $("#clock").append(moment().format('HH:mm:ss'));
+  setTimeout("clock()",1000);
+
+};
+clock();
+
 
 $("#add-train").on("click", function (event) {
   event.preventDefault();
@@ -51,11 +62,34 @@ database.ref().on("child_added", function (childSnapshot) {
   console.log(cs.nextArrival);
   console.log(cs.minutesAway);
 
+  function recalculateVariables() {
+    var timeConvert = moment(cs.firstTrain, "HH:mm:ss").subtract(1, "years");
+    var timeDiff = moment().diff(moment(timeConvert), "minutes");
+    var remainder = timeDiff % cs.frequency;
+    minutesLeft = cs.frequency - remainder;
+    var nextTrain = moment().add(minutesLeft, "minutes");
+    console.log(moment(nextTrain).format("X"));
+    updatedNextArrival = moment(nextTrain).format("HH:mm");
+    console.log(updatedNextArrival);
+    newMinutesAway = moment(nextTrain).diff(moment(), "minutes")
+    console.log(moment(nextTrain).diff(moment(), "minutes"))
+    console.log(newMinutesAway);
+
+
+  };
+
   $("#nameDisplay").append("<div class='nameAdd'>" + cs.name);
   $("#destDisplay").append("<div class='destAdd'>" + cs.destination);
   $("#freqDisplay").append("<div class='freqAdd'>" + cs.frequency);
-  $("#arrivalDisplay").append("<div class='arrivalAdd'>" + cs.nextArrival);
-  $("#minDisplay").append("<div class='minAdd'>" + cs.minutesAway);
+  if (moment().format("HH:mm") >= cs.nextArrival) {
+    recalculateVariables();
+    $("#arrivalDisplay").append("<div class='arrivalAdd'>" + updatedNextArrival);
+    $("#minDisplay").append("<div class='minAdd'>" + newMinutesAway);
+  } else {
+    $("#arrivalDisplay").append("<div class='arrivalAdd'>" + cs.nextArrival);
+    $("#minDisplay").append("<div class='minAdd'>" + cs.minutesAway);
+  }
+  // $("#minDisplay").append("<div class='minAdd'>" + cs.minutesAway);
 
   $("#nameInput").val("");
   $("#destInput").val("");
@@ -80,3 +114,4 @@ function calculateVariables() {
   console.log(minutesAway);
 
 };
+
