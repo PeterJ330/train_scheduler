@@ -21,8 +21,6 @@ var newMinutesAway = "";
 var currentTime = moment();
 
 
-// $(document).ready(clock);
-
 function clock() {
   $("#clock").text(moment().format('LL'));
   $("#clock").append(" - ");
@@ -52,6 +50,10 @@ $("#add-train").on("click", function (event) {
     nextArrival: nextArrival,
     dateAdded: firebase.database.ServerValue.TIMESTAMP
   });//closes push
+  $("#nameInput").val("");
+  $("#destInput").val("");
+  $("#firstTrainInput").val("");
+  $("#freqInput").val("");
 });//closes .onClick
 
 database.ref().on("child_added", function (childSnapshot) {
@@ -75,9 +77,9 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log(moment(nextTrain).diff(moment(), "minutes"))
     console.log(newMinutesAway);
 
-
   };
 
+  
   $("#nameDisplay").append("<div class='nameAdd'>" + cs.name);
   $("#destDisplay").append("<div class='destAdd'>" + cs.destination);
   $("#freqDisplay").append("<div class='freqAdd'>" + cs.frequency);
@@ -89,14 +91,9 @@ database.ref().on("child_added", function (childSnapshot) {
     $("#arrivalDisplay").append("<div class='arrivalAdd'>" + cs.nextArrival);
     $("#minDisplay").append("<div class='minAdd'>" + cs.minutesAway);
   }
-  // $("#minDisplay").append("<div class='minAdd'>" + cs.minutesAway);
 
-  $("#nameInput").val("");
-  $("#destInput").val("");
-  $("#firstTrainInput").val("");
-  $("#freqInput").val("");
-
-}, function (errorObject) {
+}, 
+function (errorObject) {
   console.log("Errors handled: " + errorObject.code);
 });
 
@@ -114,4 +111,6 @@ function calculateVariables() {
   console.log(minutesAway);
 
 };
+
+
 
