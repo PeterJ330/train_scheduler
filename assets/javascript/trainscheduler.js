@@ -64,6 +64,8 @@ database.ref().on("child_added", function (childSnapshot) {
   console.log(cs.nextArrival);
   console.log(cs.minutesAway);
 
+
+
   function recalculateVariables() {
     var timeConvert = moment(cs.firstTrain, "HH:mm:ss").subtract(1, "years");
     var timeDiff = moment().diff(moment(timeConvert), "minutes");
@@ -83,7 +85,13 @@ database.ref().on("child_added", function (childSnapshot) {
   $("#nameDisplay").append("<div class='nameAdd'>" + cs.name);
   $("#destDisplay").append("<div class='destAdd'>" + cs.destination);
   $("#freqDisplay").append("<div class='freqAdd'>" + cs.frequency);
-  if (moment().format("HH:mm") >= cs.nextArrival) {
+  if ( moment(currentTime).format("HH:mm")<= moment(cs.firstTrain).format("HH:mm")) {
+    recalculateVariables();
+    $("#arrivalDisplay").append("<div class='arrivalAdd'>" + updatedNextArrival);
+    $("#minDisplay").append("<div class='minAdd'>" + newMinutesAway);
+    console.log("Trains have Stopped Running");
+  }
+   else if (moment().format("HH:mm") >= cs.nextArrival) {
     recalculateVariables();
     $("#arrivalDisplay").append("<div class='arrivalAdd'>" + updatedNextArrival);
     $("#minDisplay").append("<div class='minAdd'>" + newMinutesAway);
